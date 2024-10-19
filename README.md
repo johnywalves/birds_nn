@@ -9,6 +9,8 @@ Instalação de pacotes pelo PIP (Python Package Index)
 pip install pillow numpy pandas scikit-learn skops
 ```
 
+pip install tensorflow matplotlib seaborn
+
 ## Referência
 
 Fonte de dados: [Bird Speciees Dataset](https://www.kaggle.com/datasets/rahmasleam/bird-speciees-dataset/data)

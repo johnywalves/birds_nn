@@ -1,7 +1,29 @@
 {
     "cSpell.words": [
+        "adamax",
+        "annot",
+        "argmax",
+        "argmin",
         "backpropagation",
+        "cmap",
+        "crossentropy",
+        "darkgrid",
+        "dataframe",
+        "figsize",
+        "fivethirtyeight",
+        "imread",
+        "imshow",
+        "keras",
         "lbfgs",
-        "skops"
+        "relu",
+        "skops",
+        "softmax",
+        "tensorflow",
+        "xlabel",
+        "xticklabels",
+        "xticks",
+        "ylabel",
+        "yticklabels",
+        "yticks"
     ]
 }

@@ -49,8 +49,7 @@ def ler_jpg_para_bmp_e_csv(input_folder, output_folder):
 
                 print(f'Arquivo {folder_name} {filename} convertido')
 
-    print('Conversões finalizadas')
-
 input_folder = './original'
 output_folder = './grayscale'
 ler_jpg_para_bmp_e_csv(input_folder, output_folder)
+print('Conversões finalizadas')
