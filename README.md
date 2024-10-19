@@ -6,7 +6,7 @@
 Instalação de pacotes pelo PIP (Python Package Index)
 
 ```bash
-pip install pillow numpy pandas scikit-learn skops
+pip install pillow rembg numpy pandas scikit-learn
 ```
 
 pip install tensorflow matplotlib seaborn

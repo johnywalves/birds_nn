@@ -1,5 +1,7 @@
-__pycache__/*
-figs/*
-data/*
-grayscale/*
-model/*
+__pycache__
+figs
+data
+grayscale
+model
+test_preprocessed
+preprocessed

@@ -1,7 +1,7 @@
 import os
 import numpy as np
 from PIL import Image
-from functions import pre_process_image
+from src.second.functions import pre_process_image
 
 def ler_jpg_para_bmp_e_csv(input_folder, output_folder):
     if not os.path.exists('data'):

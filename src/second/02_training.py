@@ -24,7 +24,7 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import warnings
 warnings.filterwarnings('ignore')
 
-data_dir = 'original'
+data_dir = 'preprocessed'
 filepaths, image_list, label_list = [], [], []
 
 folders = os.listdir(data_dir)

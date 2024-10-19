@@ -8,7 +8,7 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 filepaths = []
 labels = []
 
-folder_original = 'test'
+folder_original = 'test_preprocessed'
 
 for filename in os.listdir(folder_original):
     img_path = os.path.join(folder_original, filename)
