@@ -1,6 +1,8 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
+print('Iniciando separação')
+
 # Carregar a fonte de dados
 birds_data = pd.read_csv("./data/birds.csv", header=None)
 
@@ -16,3 +18,5 @@ x_train.to_csv('./data/birds_x_train.csv', header=None, index=None)
 x_test.to_csv('./data/birds_x_test.csv', header=None, index=None)
 y_train.to_csv('./data/birds_y_train.csv', header=None, index=None)
 y_test.to_csv('./data/birds_y_test.csv', header=None, index=None)
+
+print('Finalizada separação')

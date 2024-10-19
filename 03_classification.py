@@ -18,6 +18,7 @@ clf = MLPClassifier(solver='lbfgs',
                     random_state=84)
 
 # Treinar a rede neural para ser capaz de realizar a predição
+print('Iniciando treinamento do modelo')
 clf.fit(x_train, y_train)
 
 y_prediction = clf.predict(x_test)
