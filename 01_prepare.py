@@ -1,11 +1,15 @@
 import os
 import numpy as np
 from PIL import Image
+from functions import pre_process_image
 
 def ler_jpg_para_bmp_e_csv(input_folder, output_folder):
-    # Gerar o arquivo CSV para escrita
-    file = open('birds.csv', mode='w', newline='')
+    if not os.path.exists('data'):
+        os.makedirs('data')
 
+    # Gerar o arquivo CSV para escrita
+    file = open('./data/birds.csv', mode='w', newline='')
+    
     # Verificar se a pasta de saída existe; caso contrário, criá-la
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
@@ -24,24 +28,21 @@ def ler_jpg_para_bmp_e_csv(input_folder, output_folder):
                 # Caminho completo do arquivo de entrada
                 img_path = os.path.join(folder_original, filename)
 
-                # Abrir a imagem usando PIL
-                img = Image.open(img_path)
-
                 # Converter a imagem para escala de cinza
-                img_gray = img.convert('L')
+                img = pre_process_image(img_path)
 
                 # Definir o caminho de saída
                 output_path = os.path.join(folder_grayscale, os.path.splitext(filename)[0] + '.bmp')
 
                 # Salvar a imagem convertida no formato .bmp
-                img_gray.save(output_path)
+                img.save(output_path)
 
                 # Converter a imagem em um array NumPy para manipular os pixels
-                img_array = np.array(img_gray).astype(str).flatten()
+                img_array = np.array(img).astype(str).flatten()
 
                 # Gerar texto com a linha dos dados em formato CSV
                 scale = ','.join(img_array)
-                row = f'{folder_name},{scale}'
+                row = f'{folder_name},{scale}\n'
 
                 # Para cada linha de pixels, escrever no arquivo CSV
                 file.write(row)
