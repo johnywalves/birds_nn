@@ -39,7 +39,9 @@ cnn_model = load_model('./model/bird_species.keras')
 predictions = cnn_model.predict(test_gen)
 
 pd.options.display.float_format = '{:,.6f}'.format
-df_predictions = pd.DataFrame(predictions).rename(classes[0], axis='columns')
+
+df_predictions = pd.DataFrame(predictions) \
+                    .rename(classes[0], axis='columns')
 
 result = pd.concat([f_series, df_predictions], axis=1)
 

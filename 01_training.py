@@ -89,11 +89,23 @@ plt.savefig('./figs/visualize_birds_species.jpg')
 
 # Splitting dataset
 stratify = df['labels']
-train_df, dummy_df = train_test_split(df, test_size=.3, shuffle=True, stratify=stratify, random_state=123)
+train_df, dummy_df = train_test_split(
+        df, 
+        test_size=.3, 
+        shuffle=True, 
+        stratify=stratify, 
+        random_state=48
+    )
 
 # Valid and test dataframe
 stratify = dummy_df['labels']
-valid_df, test_df = train_test_split(dummy_df, test_size=.5, shuffle=True, stratify=stratify, random_state=123)
+valid_df, test_df = train_test_split(
+        dummy_df,
+        test_size=.5,
+        shuffle=True,
+        stratify=stratify,
+        random_state=123
+    )
 
 print('\n\nNumbers')
 print(f"Number of Training dataset: {len(train_df)}\nNumber of Validation dataset: {len(valid_df)}\nNumber of Testing dataset: {len(test_df)}")
@@ -108,32 +120,38 @@ img_shape = (img_size[0], img_size[1], channels)
 tr_gen = ImageDataGenerator()
 ts_gen = ImageDataGenerator()
 
-train_gen = tr_gen.flow_from_dataframe(train_df,
-                                       x_col='filepaths',
-                                       y_col='labels',
-                                       target_size=img_size,
-                                       class_mode='categorical', 
-                                       color_mode='rgb',
-                                       shuffle= True, 
-                                       batch_size=batch_size)
+train_gen = tr_gen.flow_from_dataframe(
+        train_df,
+        x_col='filepaths',
+        y_col='labels',
+        target_size=img_size,
+        class_mode='categorical', 
+        color_mode='rgb',
+        shuffle= True, 
+        batch_size=batch_size
+    )
 
-valid_gen = ts_gen.flow_from_dataframe(valid_df, 
-                                       x_col='filepaths',
-                                       y_col='labels',
-                                       target_size=img_size,
-                                       class_mode='categorical',
-                                       color_mode='rgb',
-                                       shuffle=True,
-                                       batch_size=batch_size)
+valid_gen = ts_gen.flow_from_dataframe(
+        valid_df, 
+        x_col='filepaths',
+        y_col='labels',
+        target_size=img_size,
+        class_mode='categorical',
+        color_mode='rgb',
+        shuffle=True,
+        batch_size=batch_size
+    )
 
-test_gen = ts_gen.flow_from_dataframe(test_df,
-                                      x_col='filepaths',
-                                      y_col='labels',
-                                      target_size=img_size,
-                                      class_mode='categorical',
-                                      color_mode='rgb',
-                                      shuffle=False,
-                                      batch_size=batch_size)
+test_gen = ts_gen.flow_from_dataframe(
+        test_df,
+        x_col='filepaths',
+        y_col='labels',
+        target_size=img_size,
+        class_mode='categorical',
+        color_mode='rgb',
+        shuffle=False,
+        batch_size=batch_size
+    )
 
 # ==========================================================
 # Create and Training Model
