@@ -32,7 +32,7 @@ def load_model():
     model = Sequential([
         Conv2D(8, (3,3), activation='relu', padding='same', input_shape=img_shape),
         MaxPooling2D((3,3)),
-        
+
         Conv2D(16, (3,3), activation='relu', padding='same', use_bias=False, kernel_regularizer=l2(WEIGHT_DECAY)),
         MaxPooling2D((2,2)),
         

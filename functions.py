@@ -10,6 +10,8 @@ sns.set_style('darkgrid')
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report, confusion_matrix
 
+import tensorflow as tf
+from tensorflow.keras import backend as K
 from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
@@ -133,6 +135,9 @@ def generate_report(prefix, history, model, test_dataset):
     loss_label = f'best epoch= {str(index_loss + 1)}'
     acc_label = f'best epoch= {str(index_acc + 1)}'
 
+    if not os.path.exists('figs'):
+        os.makedirs('figs')
+
     # ==========================================================
     # Training and Validation Loss
     # ==========================================================
@@ -192,7 +197,7 @@ def generate_report(prefix, history, model, test_dataset):
     cm = confusion_matrix(test_dataset.classes, y_pred)
 
     # Create a heat map
-    plt.figure(figsize=(10, 8))
+    plt.figure(figsize=(12, 8))
     sns.heatmap(cm, 
                 annot=True, 
                 fmt='d', 
@@ -249,3 +254,23 @@ def get_database_for_test():
             )    
 
     return test_gen, f_series
+
+def calc_entropy(f_series, predictions):
+    # Distância de Mahalanobis ou Máxima Entropia
+    def entropy(p):
+        return -tf.reduce_sum(p * K.log(p + 1e-6), axis=-1)
+
+    ent = entropy(predictions)
+
+    entropies = pd.Series(ent, name='entropies')
+
+    result = pd.concat([f_series, entropies], axis=1)
+
+    return result 
+
+    # # Se a entropia for alta, é OOD
+    # ood_threshold = 2.5
+    # if ent > ood_threshold:
+    #     print("Amostra OOD detectada pela entropia")
+    # else:
+    #     print("Amostra dentro da distribuição")
