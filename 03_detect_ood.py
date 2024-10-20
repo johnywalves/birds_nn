@@ -7,7 +7,7 @@ from tensorflow.keras.models import load_model
 
 test_gen, f_series = get_database_for_test()
 
-cnn_model = load_model('./model/bird_species.keras')
+cnn_model = load_model('./model/original_bird_species.keras')
 
 predictions = cnn_model.predict(test_gen)
 
