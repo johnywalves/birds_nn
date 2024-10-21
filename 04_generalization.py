@@ -76,11 +76,13 @@ plateau = ReduceLROnPlateau(
 
 # Create CNN model
 cnn_model = load_model()
-history = cnn_model.fit(x= train_gen, 
-                        verbose=1, 
-                        validation_data=valid_gen,
-                        epochs=1000, 
-                        callbacks=[early_stopping, plateau])
+history = cnn_model.fit(
+    x=train_gen,
+    verbose=1,
+    validation_data=valid_gen,
+    epochs=1000,
+    callbacks=[early_stopping, plateau]
+)
 
 # Save the model
 if not os.path.exists('model'):

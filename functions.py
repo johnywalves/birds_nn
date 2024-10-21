@@ -197,7 +197,7 @@ def generate_report(prefix, history, model, test_dataset):
     cm = confusion_matrix(test_dataset.classes, y_pred)
 
     # Create a heat map
-    plt.figure(figsize=(12, 8))
+    plt.figure(figsize=(14, 10))
     sns.heatmap(cm, 
                 annot=True, 
                 fmt='d', 
@@ -214,7 +214,7 @@ def generate_report(prefix, history, model, test_dataset):
     plt.xticks(rotation=45)  # Rotation of x-axis labels
     plt.yticks(rotation=0)   # Rotation of y-axis labels
 
-    plt.savefig(f'./figs/{prefix}_confusion_matrix.jpg')
+    plt.savefig(f'./figs/{prefix}_confusion_matrix.jpg', bbox_inches='tight')
 
     # ==========================================================
     # Classification report
